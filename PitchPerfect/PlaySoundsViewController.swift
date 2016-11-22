@@ -19,19 +19,18 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
    
-    var recordedAudioURL: NSURL!
+    var recordedAudioURL: URL!
     var audioFile:AVAudioFile!
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
     
-    enum ButtonType: Int { case slow = 1, fast = 2, chipmunk = 3 , vader = 4, echo = 5, reverb = 6 }
+    enum ButtonType: Int { case slow = 1, fast = 2, chipmunk = 3, vader = 4 , echo = 5, reverb = 6 }
 
     // MARK: Actions
     
     @IBAction func playSoundForButton(_ sender: UIButton) {
-        
-        func playSoundForButton(_ sender: UIButton) {
+        print("Play Button Pressed")
             switch(ButtonType(rawValue: sender.tag)!) {
             case .slow:
                 playSound(rate: 0.5)
@@ -48,7 +47,7 @@ class PlaySoundsViewController: UIViewController {
             }
             
             configureUI(.playing)
-        }
+    
     }
     
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
